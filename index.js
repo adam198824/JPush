@@ -1,3 +1,13 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,13 +17,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 /**
- * @name JPush 极光推送
+ * @name JPush
+ * @description
  */
-export var JPush = (function () {
+var JPush = (function (_super) {
+    __extends(JPush, _super);
     function JPush() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
      * 开启 JPush SDK 提供的推送服务
@@ -85,6 +98,13 @@ export var JPush = (function () {
         return;
     };
     /**
+    * 自定义设置
+    * @return {Promise<any>}
+    */
+    JPush.prototype.setCustomPushNotificationBuilder = function () {
+        return;
+    };
+    /**
      * 判断系统设置中是否允许当前应用推送
      * @return {Promise<any>}
      */
@@ -123,93 +143,101 @@ export var JPush = (function () {
         });
     };
     ;
-    JPush.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    JPush.ctorParameters = function () { return []; };
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "init", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "stopPush", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "resumePush", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "isPushStopped", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "getRegistrationID", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', [Array, String]), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "setTagsWithAlias", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', [Array]), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "setTags", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', [String]), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "setAlias", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "getUserNotificationSettings", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "openNotification", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "receiveNotification", null);
-    __decorate([
-        Cordova(), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', Promise)
-    ], JPush.prototype, "receiveMessage", null);
-    JPush = __decorate([
-        Plugin({
-            pluginName: 'JPush',
-            plugin: 'jpush-phonegap-plugin',
-            pluginRef: 'plugins.jPushPlugin',
-            repo: 'https://github.com/jpush/jpush-phonegap-plugin',
-            platforms: ['Android', 'iOS'],
-        }), 
-        __metadata('design:paramtypes', [])
-    ], JPush);
     return JPush;
-}());
+}(IonicNativePlugin));
+JPush.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+JPush.ctorParameters = function () { return []; };
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "init", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "stopPush", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "resumePush", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "isPushStopped", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "getRegistrationID", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Array, String]),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "setTagsWithAlias", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Array]),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "setTags", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "setAlias", null);
+__decorate([
+    Cordova({
+        platforms: ['Android']
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "setCustomPushNotificationBuilder", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "getUserNotificationSettings", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "openNotification", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "receiveNotification", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "receiveMessage", null);
+JPush = __decorate([
+    Plugin({
+        pluginName: 'JPush',
+        plugin: 'jpush-phonegap-plugin',
+        pluginRef: 'plugins.jPushPlugin',
+        repo: 'https://github.com/jpush/jpush-phonegap-plugin',
+        platforms: ['Android', 'iOS'],
+    })
+], JPush);
+export { JPush };
 //# sourceMappingURL=index.js.map

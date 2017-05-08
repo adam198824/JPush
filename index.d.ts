@@ -1,7 +1,9 @@
+import { IonicNativePlugin } from '@ionic-native/core';
 /**
- * @name JPush 极光推送
+ * @name JPush
+ * @description
  */
-export declare class JPush {
+export declare class JPush extends IonicNativePlugin {
     /**
      * 开启 JPush SDK 提供的推送服务
      * 开发者 App 可以通过调用停止推送服务 API 来停止极光推送服务。当又需要使用极光推送服务时，则必须要调用恢复推送服务 API。
@@ -55,6 +57,11 @@ export declare class JPush {
      * @return {Promise<any>}
      */
     setAlias(alias: string): Promise<any>;
+    /**
+    * 自定义设置
+    * @return {Promise<any>}
+    */
+    setCustomPushNotificationBuilder(): Promise<any>;
     /**
      * 判断系统设置中是否允许当前应用推送
      * @return {Promise<any>}
