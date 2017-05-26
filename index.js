@@ -117,8 +117,8 @@ var JPush = (function (_super) {
      * @return {Promise<any>}
      */
     JPush.prototype.openNotification = function () {
-        return new Promise(function (observer) {
-            addEventListener('jpush.openNotification', function (event) { return event; }, false);
+        return new Promise(function (resolve) {
+            document.addEventListener('jpush.openNotification', function (event) { resolve(event); }, false);
         });
     };
     /**
@@ -127,8 +127,8 @@ var JPush = (function (_super) {
      * @return {Promise<any>}
      */
     JPush.prototype.receiveNotification = function () {
-        return new Promise(function (observer) {
-            addEventListener('jpush.receiveNotification', function (event) { return event; }, false);
+        return new Promise(function (resolve) {
+            document.addEventListener('jpush.receiveNotification', function (event) { resolve(event); }, false);
         });
     };
     ;
@@ -138,11 +138,16 @@ var JPush = (function (_super) {
      * @return {Promise<any>}
      */
     JPush.prototype.receiveMessage = function () {
-        return new Promise(function (observer) {
-            addEventListener('jpush.receiveMessage', function (event) { return event; }, false);
+        return new Promise(function (resolve) {
+            document.addEventListener('jpush.receiveMessage', function (event) { resolve(event); }, false);
         });
     };
     ;
+    /**
+    * 安卓调试模式
+    * @param mode 是否启用
+    */
+    JPush.prototype.setDebugMode = function (mode) { };
     return JPush;
 }(IonicNativePlugin));
 JPush.decorators = [
@@ -230,6 +235,14 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], JPush.prototype, "receiveMessage", null);
+__decorate([
+    Cordova({
+        platforms: ['Android', 'iOS']
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Boolean]),
+    __metadata("design:returntype", void 0)
+], JPush.prototype, "setDebugMode", null);
 JPush = __decorate([
     Plugin({
         pluginName: 'JPush',

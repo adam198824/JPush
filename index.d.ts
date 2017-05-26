@@ -85,4 +85,9 @@ export declare class JPush extends IonicNativePlugin {
      * @return {Promise<any>}
      */
     receiveMessage(): Promise<any>;
+    /**
+    * 安卓调试模式
+    * @param mode 是否启用
+    */
+    setDebugMode(mode: boolean): void;
 }

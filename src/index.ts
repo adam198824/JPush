@@ -1,8 +1,9 @@
-import { Plugin, Cordova } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
 
 /**
- * @name JPush 极光推送
+ * @name JPush
+ * @description 
  */
 @Plugin({
   pluginName: 'JPush',
@@ -12,7 +13,7 @@ import { Injectable } from '@angular/core';
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class JPush {
+export class JPush extends IonicNativePlugin {
 
   /**
    * 开启 JPush SDK 提供的推送服务
@@ -91,6 +92,17 @@ export class JPush {
   setAlias(alias: string): Promise<any> {
     return;
   }
+
+  /**
+  * 自定义设置
+  * @return {Promise<any>} 
+  */
+  @Cordova({
+    platforms: ['Android']
+  })
+  setCustomPushNotificationBuilder(): Promise<any> {
+    return;
+  }
   /**
    * 判断系统设置中是否允许当前应用推送
    * @return {Promise<any>} 
@@ -106,8 +118,8 @@ export class JPush {
    */
   @Cordova()
   openNotification(): Promise<any> {
-    return new Promise((observer) => {
-      addEventListener('jpush.openNotification', function (event) { return event; }, false);
+    return new Promise((resolve) => {
+      document.addEventListener('jpush.openNotification', (event) => { resolve(event); }, false);
     });
   }
   /**
@@ -117,8 +129,8 @@ export class JPush {
    */
   @Cordova()
   receiveNotification(): Promise<any> {
-    return new Promise((observer) => {
-      addEventListener('jpush.receiveNotification', function (event) { return event; }, false);
+    return new Promise((resolve) => {
+      document.addEventListener('jpush.receiveNotification', (event) => { resolve(event); }, false);
     });
   };
   /**
@@ -128,9 +140,16 @@ export class JPush {
    */
   @Cordova()
   receiveMessage(): Promise<any> {
-    return new Promise((observer) => {
-      addEventListener('jpush.receiveMessage', function (event) { return event; }, false);
+    return new Promise((resolve) => {
+      document.addEventListener('jpush.receiveMessage', (event) => { resolve(event); }, false);
     });
   };
-
+  /**
+  * 调试模式
+  * @param mode 是否启用 
+  */
+  @Cordova({
+    platforms: ['Android', 'iOS']
+  })
+  setDebugMode(mode: boolean) { }
 }
