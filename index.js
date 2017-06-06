@@ -111,27 +111,28 @@ var JPush = (function (_super) {
     JPush.prototype.getUserNotificationSettings = function () {
         return;
     };
-    /**
-     * 获取点击通知内容
-     * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushopennotification
-     * @return {Promise<any>}
-     */
-    JPush.prototype.openNotification = function () {
-        return new Promise(function (resolve) {
-            document.addEventListener('jpush.openNotification', function (event) { resolve(event); }, false);
-        });
-    };
-    /**
-     * 获取通知内容
-     * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushreceivenotification
-     * @return {Promise<any>}
-     */
-    JPush.prototype.receiveNotification = function () {
-        return new Promise(function (resolve) {
-            document.addEventListener('jpush.receiveNotification', function (event) { resolve(event); }, false);
-        });
-    };
-    ;
+    // /**
+    //  * 获取点击通知内容
+    //  * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushopennotification
+    //  * @return {Promise<any>} 
+    //  */
+    // @Cordova()
+    // openNotice(): Promise<any> {
+    //   return new Promise((resolve) => {
+    //     document.addEventListener('jpush.openNotification', (event) => { resolve(event); }, false);
+    //   });
+    // }
+    // /**
+    //  * 获取通知内容
+    //  * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushreceivenotification
+    //  * @return {Promise<any>} 
+    //  */
+    // @Cordova()
+    // receiveNotification(): Promise<any> {
+    //   return new Promise((resolve) => {
+    //     document.addEventListener('jpush.receiveNotification', (event) => { resolve(event); }, false);
+    //   });
+    // };
     /**
      * 获取自定义消息推送内容
      * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushreceivemessage
@@ -144,10 +145,33 @@ var JPush = (function (_super) {
     };
     ;
     /**
-    * 安卓调试模式
+    * 调试模式
     * @param mode 是否启用
     */
     JPush.prototype.setDebugMode = function (mode) { };
+    /**
+     * 设置badge
+     * @param value 数量
+     * @return {Promise<any>}
+     */
+    JPush.prototype.setBadge = function (value) {
+        return;
+    };
+    /**
+     * 重置badge
+     * @return {Promise<any>}
+     */
+    JPush.prototype.reSetBadge = function () {
+        return;
+    };
+    /**
+     * 本接口直接改变应用本地的角标值，设置 iOS 的角标，当设置 value ＝ 0 时为清除角标
+     * @param value 数量
+     * @return {Promise<any>}
+     */
+    JPush.prototype.setApplicationIconBadgeNumber = function (value) {
+        return;
+    };
     return JPush;
 }(IonicNativePlugin));
 JPush.decorators = [
@@ -222,27 +246,37 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], JPush.prototype, "openNotification", null);
-__decorate([
-    Cordova(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], JPush.prototype, "receiveNotification", null);
-__decorate([
-    Cordova(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
 ], JPush.prototype, "receiveMessage", null);
 __decorate([
-    Cordova({
-        platforms: ['Android', 'iOS']
-    }),
+    Cordova(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Boolean]),
     __metadata("design:returntype", void 0)
 ], JPush.prototype, "setDebugMode", null);
+__decorate([
+    Cordova({
+        platforms: ['iOS']
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "setBadge", null);
+__decorate([
+    Cordova({
+        platforms: ['iOS']
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "reSetBadge", null);
+__decorate([
+    Cordova({
+        platforms: ['iOS']
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], JPush.prototype, "setApplicationIconBadgeNumber", null);
 JPush = __decorate([
     Plugin({
         pluginName: 'JPush',

@@ -111,28 +111,28 @@ export class JPush extends IonicNativePlugin {
   getUserNotificationSettings(): Promise<any> {
     return;
   }
-  /**
-   * 获取点击通知内容
-   * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushopennotification
-   * @return {Promise<any>} 
-   */
-  @Cordova()
-  openNotification(): Promise<any> {
-    return new Promise((resolve) => {
-      document.addEventListener('jpush.openNotification', (event) => { resolve(event); }, false);
-    });
-  }
-  /**
-   * 获取通知内容
-   * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushreceivenotification
-   * @return {Promise<any>} 
-   */
-  @Cordova()
-  receiveNotification(): Promise<any> {
-    return new Promise((resolve) => {
-      document.addEventListener('jpush.receiveNotification', (event) => { resolve(event); }, false);
-    });
-  };
+  // /**
+  //  * 获取点击通知内容
+  //  * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushopennotification
+  //  * @return {Promise<any>} 
+  //  */
+  // @Cordova()
+  // openNotice(): Promise<any> {
+  //   return new Promise((resolve) => {
+  //     document.addEventListener('jpush.openNotification', (event) => { resolve(event); }, false);
+  //   });
+  // }
+  // /**
+  //  * 获取通知内容
+  //  * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushreceivenotification
+  //  * @return {Promise<any>} 
+  //  */
+  // @Cordova()
+  // receiveNotification(): Promise<any> {
+  //   return new Promise((resolve) => {
+  //     document.addEventListener('jpush.receiveNotification', (event) => { resolve(event); }, false);
+  //   });
+  // };
   /**
    * 获取自定义消息推送内容
    * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushreceivemessage
@@ -148,8 +148,39 @@ export class JPush extends IonicNativePlugin {
   * 调试模式
   * @param mode 是否启用 
   */
-  @Cordova({
-    platforms: ['Android', 'iOS']
-  })
+  @Cordova()
   setDebugMode(mode: boolean) { }
+  /**
+   * 设置badge
+   * @param value 数量
+   * @return {Promise<any>} 
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  setBadge(value: number): Promise<any> {
+    return;
+  }
+  /**
+   * 重置badge
+   * @return {Promise<any>} 
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  reSetBadge(): Promise<any> {
+    return;
+  }
+  /**
+   * 本接口直接改变应用本地的角标值，设置 iOS 的角标，当设置 value ＝ 0 时为清除角标
+   * @param value 数量
+   * @return {Promise<any>} 
+   */
+  @Cordova({
+    platforms: ['iOS']
+  })
+  setApplicationIconBadgeNumber(value: number): Promise<any> {
+    return;
+  }
+
 }

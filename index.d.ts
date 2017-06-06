@@ -68,26 +68,31 @@ export declare class JPush extends IonicNativePlugin {
      */
     getUserNotificationSettings(): Promise<any>;
     /**
-     * 获取点击通知内容
-     * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushopennotification
-     * @return {Promise<any>}
-     */
-    openNotification(): Promise<any>;
-    /**
-     * 获取通知内容
-     * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushreceivenotification
-     * @return {Promise<any>}
-     */
-    receiveNotification(): Promise<any>;
-    /**
      * 获取自定义消息推送内容
      * https://github.com/jpush/jpush-phonegap-plugin/blob/master/doc/Common_detail_api.md#event---jpushreceivemessage
      * @return {Promise<any>}
      */
     receiveMessage(): Promise<any>;
     /**
-    * 安卓调试模式
+    * 调试模式
     * @param mode 是否启用
     */
     setDebugMode(mode: boolean): void;
+    /**
+     * 设置badge
+     * @param value 数量
+     * @return {Promise<any>}
+     */
+    setBadge(value: number): Promise<any>;
+    /**
+     * 重置badge
+     * @return {Promise<any>}
+     */
+    reSetBadge(): Promise<any>;
+    /**
+     * 本接口直接改变应用本地的角标值，设置 iOS 的角标，当设置 value ＝ 0 时为清除角标
+     * @param value 数量
+     * @return {Promise<any>}
+     */
+    setApplicationIconBadgeNumber(value: number): Promise<any>;
 }
